@@ -1,0 +1,336 @@
+[
+    {
+        "name": "amstradcpc",
+        "cores": ["crocods"],
+        "system": ["Amstrad - CPC"],
+        "allExt": [".dsk", ".sna", ".kcr", "cpc"],
+        "systemExt": []
+    }, {
+        "name": "arcade",
+        "cores": ["fbalpha"],
+        "system": ["FB Alpha - Arcade Games"],
+        "allExt": [".iso"],
+        "systemExt": []
+    }, {
+        "name": "atari2600",
+        "cores": ["stella"],
+        "system": ["Atari - 2600"],
+        "allExt": [".a26", ".bin"],
+        "systemExt": []
+    }, {
+        "name": "atari7800",
+        "cores": ["prosystem"],
+        "system": ["Atari - 7800"],
+        "allExt": [".a78", ".bin"],
+        "systemExt": []
+    }, {
+        "name": "atarilynx",
+        "cores": ["handy"],
+        "system": ["Atari - Lynx"],
+        "allExt": [".lnx"],
+        "systemExt": []
+    }, {
+        "name": "wonderswan",
+        "cores": ["mednafen_wswan"],
+        "system": ["Bandai - WonderSwan"],
+        "allExt": [".ws", ".wsc", ".pc2"],
+        "systemExt": [".ws", ".pc2"]
+    }, {
+        "name": "wonderswancolor",
+        "cores": ["mednafen_wswan"],
+        "system": ["Bandai - WonderSwan Color"],
+        "allExt": [".ws", ".wsc", ".pc2"],
+        "systemExt": [".wsc"]
+    }, {
+        "name": "cb",
+        "cores": ["cannonball"],
+        "system": ["Cannonball"],
+        "allExt": [".game",".88"],
+        "systemExt": []
+    }, {
+        "name": "cave",
+        "cores": ["nxengine"],
+        "system": ["Cave Story"],
+        "allExt": [".exe"],
+        "systemExt": []
+    }, {
+        "name": "c64",
+        "cores": ["vice_x64"],
+        "system": ["Commodore - 64"],
+        "allExt": [".d64", ".d71", ".d80", ".d81", ".d82", ".g64",
+                    ".g41", ".x64", ".t64", ".tap", ".prg", ".p00",
+                    ".crt", ".bin", ".d6z", ".d7z",
+                    ".d8z", ".g6z", ".g4z", ".x6z"],
+        "systemExt": []
+    }, {
+        "name": "doom",
+        "cores": ["prboom"],
+        "system": ["DOOM"],
+        "allExt": [".wad", ".iwad", ".pwad"],
+        "systemExt": []
+    }, {
+        "name": "dos",
+        "cores": ["dosbox"],
+        "system": ["DOS"],
+        "allExt": [".exe", ".com", ".bat", ".conf"],
+        "systemExt": []
+    }, {
+        "name": "fb",
+        "cores": ["reminiscence"],
+        "system": ["Flashback"],
+        "allExt": [".map"],
+        "systemExt": []
+    }, {
+        "name": "gme",
+        "cores": ["gme"],
+        "system": ["Game Music Emu"],
+        "allExt": [".ay", ".gbs", ".gym", ".hes", ".kss", ".nsf",
+                    ".nsfe", ".sap", ".spc", ".vgm", ".vgz"],
+        "systemExt": []
+    }, {
+        "name": "vectrex",
+        "cores": ["vecx"],
+        "system": ["GCE - Vectrex"],
+        "allExt": [".bin", ".gam", ".vec"],
+        "systemExt": []
+    }, {
+        "name": "heg",
+        "cores": ["gw"],
+        "system": ["Handheld Electronic Game"],
+        "allExt": [".mgw"],
+        "systemExt": []
+    }, {
+        "name": "videopac",
+        "cores": ["o2em"],
+        "system": ["Magnavox - Odyssey2"],
+        "allExt": [".bin"],
+        "systemExt": []
+    }, {
+        "name": "arcade",
+        "cores": ["mame2000", "mame2003", "mame2003_plus"],
+        "system": ["MAME", "MAME 2000", "MAME 2003", "MAME 2003-Plus"],
+        "allExt": [".chd"],
+        "systemExt": []
+    }, {
+        "name": "intellivision",
+        "cores": ["freeintv"],
+        "system": ["Mattel - Intellivision"],
+        "allExt": [".int", ".itv", ".rom", ".bin"],
+        "systemExt": []
+    }, {
+        "name": "msx",
+        "cores": ["fmsx"],
+        "system": ["Microsoft - MSX"],
+        "allExt": [".rom", ".mx1", ".mx2", ".dsk", ".cas", ".col"],
+        "systemExt": []
+    }, {
+        "name": "pcengine",
+        "cores": ["mednafen_pce_fast"],
+        "system": ["NEC - PC Engine - TurboGrafx 16"],
+        "allExt": [".pce", ".cue", ".ccd", ".iso", ".img", ".bin", ".chd"],
+        "systemExt": [".pce"]
+    }, {
+        "name": "pcenginecd",
+        "cores": ["mednafen_pce_fast"],
+        "system": ["NEC - PC Engine CD - TurboGrafx-CD"],
+        "allExt": [".pce", ".cue", ".ccd", ".iso", ".img", ".bin", ".chd"],
+        "systemExt": [".cue", ".ccd", ".iso", ".img", ".chd"]
+    }, {
+        "name": "pcenginesgx",
+        "cores": ["mednafen_supergrafx"],
+        "system": ["NEC - PC Engine SuperGrafx"],
+        "allExt": [".pce", ".sgx", ".cue", ".ccd", ".chd"],
+        "systemExt": [".sgx"]
+    }, {
+        "name": "nes",
+        "cores": ["fceumm", "nestopia", "quicknes"],
+        "system": ["Nintendo - Nintendo Entertainment System"],
+        "allExt": [".fds", ".nes", ".unif", ".unf"],
+        "systemExt": [".nes"]
+    }, {
+        "name": "fds",
+        "cores": ["fceumm", "nestopia", "quicknes"],
+        "system": ["Nintendo - Family Computer Disk System"],
+        "allExt": [".fds", ".nes", ".unif", ".unf"],
+        "systemExt": [".fds"]
+    }, {
+        "name": "gb",
+        "cores": ["gambatte", "gearboy", "tgbdual"],
+        "system": ["Nintendo - Game Boy"],
+        "allExt": [".gb", ".gbc", ".dmg", ".cgb", ".sgb"],
+        "systemExt": [".gb"]
+    }, {
+        "name": "gba",
+        "cores": ["mgba", "vba_next"],
+        "system": ["Nintendo - Game Boy Advance"],
+        "allExt": [".gb", ".gbc", ".gba"],
+        "systemExt": [".gba"]
+    }, {
+        "name": "gbc",
+        "cores": ["gambatte", "gearboy", "tgbdual"],
+        "system": ["Nintendo - Game Boy Color"],
+        "allExt": [".gb", ".gbc", ".dmg", ".cgb", ".sgb"],
+        "systemExt": [".gbc"]
+    }, {
+        "name": "n64",
+        "cores": ["mupen64plus", "mupen64plus_next"],
+        "system": ["Nintendo - Nintendo 64"],
+        "allExt": [".n64", ".v64", ".z64", ".bin", ".u1", ".ndd"],
+        "systemExt": []
+    }, {
+        "name": "nds",
+        "cores": ["DeSmuME", "MelonDS"],
+        "system": ["Nintendo - Nintendo DS"],
+        "allExt": [".nds", ".bin"],
+        "systemExt": []
+    }, {
+        "name": "pokemini",
+        "cores": ["pokemini"],
+        "system": ["Nintendo - Pokemon Mini"],
+        "allExt": [".min"],
+        "systemExt": []
+    }, {
+        "name": "snes",
+        "cores": ["snes9x", "snes9x2010"],
+        "system": ["Nintendo - Super Nintendo Entertainment System"],
+        "allExt": [".smc", ".sfc", ".swc", ".fig", ".bs", ".gd3", ".gd7", ".dx2", ".bsx"],
+        "systemExt": []
+    }, {
+        "name": "virtualboy",
+        "cores": ["mednafen_vb"],
+        "system": ["Nintendo - Virtual Boy"],
+        "allExt": [".vb", ".vboy", ".bin"],
+        "systemExt": []
+    }, {
+        "name": "palm",
+        "cores": ["mu"],
+        "system": ["Palm OS"],
+        "allExt": [".rom", ".bin"],
+        "systemExt": []
+    }, {
+        "name": "pcdg",
+        "cores": ["pocketcdg"],
+        "system": ["PocketCDG"],
+        "allExt": [".cdg"],
+        "systemExt": []
+    }, {
+        "name": "quake",
+        "cores": ["tyrquake"],
+        "system": ["Quake1"],
+        "allExt": [".pak"],
+        "systemExt": []
+    }, {
+        "name": "rick",
+        "cores": ["xrick"],
+        "system": ["Rick Dangerous"],
+        "allExt": [".zip"],
+        "systemExt": []
+    }, {
+        "name": "rpg",
+        "cores": ["easyrpg"],
+        "system": ["RPG Maker"],
+        "allExt": [".ini"],
+        "systemExt": []
+    }, {
+        "name": "scummvm",
+        "cores": ["scummvm"],
+        "system": ["ScummVM"],
+        "allExt": [".scummvm", ".sh", ".svm"],
+        "systemExt": []
+    }, {
+        "name": "sega32x",
+        "cores": ["picodrive"],
+        "system": ["Sega - 32X"],
+        "allExt": [".bin", ".gen", ".smd", ".md", ".32x", ".cue", ".iso", ".sms", ".68k"],
+        "systemExt": [".32x", ".bin", ".md", ".smd"]
+    }, {
+        "name": "gamegear",
+        "cores": ["gearsystem", "genesis_plus_gx"],
+        "system": ["Sega - Game Gear"],
+        "allExt": [".gen", ".smd", ".md", ".cue", ".iso",
+                    ".sms", ".68k", ".rom", ".mdx", ".gg", ".sg", ".chd"],
+        "systemExt": [".bin", ".gg"]
+    }, {
+        "name": "mastersystem",
+        "cores": ["gearsystem", "genesis_plus_gx", "picodrive"],
+        "system": ["Sega - Master System - Mark III"],
+        "allExt": [".gen", ".smd", ".md", ".cue", ".iso",
+                    ".sms", ".68k", ".rom", ".3sx", ".mdx", ".gg", ".sg", ".chd"],
+        "systemExt": [".sms", ".bin"]
+    }, {
+        "name": "megadrive",
+        "cores": ["genesis_plus_gx", "picodrive"],
+        "system": ["Sega - Mega Drive - Genesis"],
+        "allExt": [".gen", ".smd", ".md", ".cue", ".iso",
+                    ".sms", ".68k", ".3sx", ".mdx", ".gg", ".sg", ".chd"],
+        "systemExt": [".gen", ".sg", ".smd", ".md"]
+    }, {
+        "name": "segacd",
+        "cores": ["genesis_plus_gx", "picodrive"],
+        "system": ["Sega - Mega-CD - Sega CD"],
+        "allExt": [".gen", ".smd", ".md", ".cue", ".iso", ".mdf",
+                    ".sms", ".68k", ".3sx", ".mdx", ".gg", ".sg", ".chd"],
+        "systemExt": [".cue", ".iso", ".mdf", ".chd"]
+    }, {
+        "name": "saturn",
+        "cores": ["yabause"],
+        "system": ["Sega - Saturn"],
+        "allExt": [".cue", ".iso", ".mdf", ".chd"],
+        "systemExt": []
+    }, {
+        "name": "x68000",
+        "cores": ["px68k"],
+        "system": ["Sharp - X68000"],
+        "allExt": [".dim", ".img", ".d88", ".88d", ".hdm",
+                    ".dup", ".2hd", ".xdf", ".hdf", ".cmd", ".m3u"],
+        "systemExt": []
+    }, {
+        "name": "zx81",
+        "cores": ["81"],
+        "system": ["Sinclair - ZX 81"],
+        "allExt": [".p", ".tzx", ".t81"],
+        "systemExt": []
+    }, {
+        "name": "zxspectrum",
+        "cores": ["fuse"],
+        "system": ["Sinclair - ZX Spectrum"],
+        "allExt": [".tzx", ".tap", ".z80", ".rzx", ".scl", ".trd"],
+        "systemExt": []
+    }, {
+        "name": "neogeo",
+        "cores": ["fbalpha"],
+        "system": ["SNK - Neo Geo"],
+        "allExt": [".zip"],
+        "systemExt": []
+    }, {
+        "name": "ngp",
+        "cores": ["mednafen_ngp"],
+        "system": ["SNK - Neo Geo Pocket"],
+        "allExt": [".ngp", ".ngc"],
+        "systemExt": [".ngp"]
+    }, {
+        "name": "ngpc",
+        "cores": ["mednafen_ngp"],
+        "system": ["SNK - Neo Geo Pocket Color"],
+        "allExt": [".ngp", ".ngc"],
+        "systemExt": [".ngc"]
+    }, {
+        "name": "psx",
+        "cores": ["pcsx_rearmed"],
+        "system": ["Sony - PlayStation"],
+        "allExt": [".m3u", ".cue", ".img", ".mdf", ".pbp", ".toc", ".cbn"],
+        "systemExt": [".m3u", ".cue", ".img", ".pbp"]
+    }, {
+        "name": "3do",
+        "cores": ["4do"],
+        "system": ["The 3DO Company - 3DO"],
+        "allExt": [".iso", ".bin", ".chd", ".cue"],
+        "systemExt": []
+    }, {
+        "name": "thom",
+        "cores": ["theodore"],
+        "system": ["Thomson - MOTO"],
+        "allExt": [".fd", ".sap", ".k7", ".rom", ".m7", ".m5"],
+        "systemExt": []
+    }
+]

@@ -1,0 +1,11 @@
+{
+    "retroarchPATH": "/retroarch/",
+    "romsPaths": ["/retroarch/roms/","/roms/"],
+    "playlistsPath": "/retroarch/playlists/",
+    "coresPath": "/retroarch/cores/",
+    "indexRomPathUsed": 0,
+    "validateFolders": false,
+    "useAllExtentions": false,
+    "useShorthandName": true,
+    "makeJsonPlaylists": true
+}
