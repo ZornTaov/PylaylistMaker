@@ -243,7 +243,7 @@ Settings = {}
 def setup():
     global coresJson
     global Settings
-    logging.basicConfig(filename='PylaylistMaker.log', level=logging.DEBUG)
+    logging.basicConfig(filename='PyLaylistMaker/PylaylistMaker.log', level=logging.DEBUG)
     console = logging.StreamHandler()
     console.setLevel(logging.INFO)
     logging.getLogger('').addHandler(console)
