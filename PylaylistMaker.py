@@ -332,7 +332,7 @@ def main():
             generatePlaylist()
             logging.info("Complete")
         imgui.pop_style_color(1)
-        imgui.text("THIS WILL MODIFY PLAYLISTS, TURNING JSON PLAYLISTS INTO THE OLD FORMAT, MAKE BACKUPS FIRST!")
+        imgui.text("THIS WILL MODIFY PLAYLISTS, MAKE BACKUPS FIRST!")
         imgui.text("State: "+state+"\n\n\n")
         quitme = False
         imgui.push_style_color(imgui.COLOR_BUTTON, *STRING_COLOR)
