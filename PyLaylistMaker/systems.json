@@ -122,7 +122,13 @@
         "cores": ["fmsx"],
         "system": ["Microsoft - MSX"],
         "allExt": [".rom", ".mx1", ".mx2", ".dsk", ".cas", ".col"],
-        "systemExt": []
+        "systemExt": [".rom", ".mx1" ]
+    }, {
+        "name": "msx2",
+        "cores": ["fmsx"],
+        "system": ["Microsoft - MSX2"],
+        "allExt": [".rom", ".mx1", ".mx2", ".dsk", ".cas", ".col"],
+        "systemExt": [".rom", ".mx2" ]
     }, {
         "name": "pcengine",
         "cores": ["mednafen_pce_fast"],
