@@ -23,7 +23,7 @@ def generateOldPlaylistEntry(fileName, ext, romDir, systemName, core=""):
         romDir+"/"+fileName+ext, #file path
         fileName, #game name, derived from file
         core_path, #core used, only going to care if there's one core, let the player choose inside RA instead
-        "DETECT", #core name, only really caring if there's only one core
+        core, #core name, only really caring if there's only one core
         "DETECT", #crc, I don't care
         systemName+".lpl"
     ]
@@ -37,7 +37,7 @@ def generatePlaylistEntry(fileName, ext, romDir, systemName, core=""):
         "path": romDir+"/"+fileName+ext,
         "label": fileName,
         "core_path": core_path,
-        "core_name": "DETECT",
+        "core_name": core,
         "crc32": "DETECT",
         "db_name": systemName+".lpl"
     }
@@ -47,9 +47,9 @@ def oldToNew(entry):
     info = {
         "path": entry[0],
         "label": entry[1],
-        "core_path": "DETECT",
-        "core_name": "DETECT",
-        "crc32": "DETECT",
+        "core_path": entry[2],
+        "core_name": entry[3],
+        "crc32": entry[4],
         "db_name": entry[5]
     }
     return info
