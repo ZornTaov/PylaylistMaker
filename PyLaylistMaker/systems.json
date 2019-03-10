@@ -30,6 +30,12 @@
         "allExt": [".lnx"],
         "systemExt": []
     }, {
+        "name": "atarijaguar",
+        "cores": ["virtualjaguar"],
+        "system": ["Atari - Jaguar"],
+        "allExt": [".j64", ".jag", ".rom", ".abs", ".cof", ".bin", ".prg"],
+        "systemExt": []
+    }, {
         "name": "wonderswan",
         "cores": ["mednafen_wswan"],
         "system": ["Bandai - WonderSwan"],
