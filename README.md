@@ -17,6 +17,7 @@ Run PyLaylistMaker.py
 - `useShorthandName`: If the folder validator should use shorthand or full system names for the folders it makes/checks for.
 - `useAllExtentions`: If the generator should use all possible extentions for all possible cores for that system.
 - `makeJsonPlaylists`: If the generator should create Json playlists.  Note that existing playlists will keep their format.
+- `printDebugLogs`: set to true if you want more debug logs to be printed to the log file.  Exceptions will always be written there if they occur.
 
 # Caution
 - PyListMaker will modify the folder structure of your Roms folder only by adding folders that don't exist when Validate Folders is ran.

@@ -7,5 +7,6 @@
     "validateFolders": false,
     "useAllExtentions": false,
     "useShorthandName": true,
-    "makeJsonPlaylists": true
+    "makeJsonPlaylists": true,
+	"printDebugLogs": false
 }

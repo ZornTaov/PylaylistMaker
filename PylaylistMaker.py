@@ -79,9 +79,9 @@ def toOrderedDict(entry, order):
 def validateFolders():
     global state
     for core in coresJson:
-        logging.info("validating rom folder at "+getRomPath()+getCoreFolder(core))
+        logger.info("validating rom folder at "+getRomPath()+getCoreFolder(core))
         if not os.path.isdir(getRomPath()+getCoreFolder(core)):
-            logging.debug("Missing "+getRomPath()+getCoreFolder(core))
+            logger.debug("Missing "+getRomPath()+getCoreFolder(core))
             os.mkdir(getRomPath()+getCoreFolder(core))
             with open(getRomPath()+getCoreFolder(core)+"/files.txt", "w") as info:
                 info.write("put files in here ending with: ")
@@ -93,9 +93,9 @@ def validateFolders():
 
 
 def addToPlaylist(system, entries, asJson=False):
-    logging.debug("Starting addToPlaylist")
+    logger.debug("Starting addToPlaylist")
     if os.path.isfile(Settings["playlistsPath"]+system+".lpl"):
-        logging.debug("Found playlist " + system)
+        logger.debug("Found playlist " + system)
         #there's already a file, so read from it to get what's already there
         newentries = []
         known = []
@@ -107,7 +107,7 @@ def addToPlaylist(system, entries, asJson=False):
             if firstChar:
                 playlist.seek(0, os.SEEK_SET)
                 if firstChar in ["{","["]:
-                    logging.debug("playlist is json")
+                    logger.debug("playlist is json")
                     #convert from old to new format
                     entries = [toOrderedDict(oldToNew(entries[i:i+6]), keyOrder) for i in range(0,len(entries),6)]
 
@@ -120,14 +120,14 @@ def addToPlaylist(system, entries, asJson=False):
                             newentries.append(entry)
                     #add newentries to existing playlist
                     if newentries:
-                        logging.debug("Adding "+str(len(newentries))+" new entries to "+system)
+                        logger.debug("Adding "+str(len(newentries))+" new entries to "+system)
                         #write to the file those that are new
                         with open(Settings["playlistsPath"]+system+".lpl", "w", newline="\n") as playlist:
                             jsonPlaylist["items"].extend(newentries)
                             json.dump(OrderedDict([(key, jsonPlaylist[key]) for key in templateOrder]), playlist, sort_keys=False, indent=2)
-                        logging.info(system+" playlist modified.")
+                        logger.info(system+" playlist modified.")
                 else:
-                    logging.debug("playlist is old format")
+                    logger.debug("playlist is old format")
                     #get list of known entries
                     line = playlist.readline()
                     while line:
@@ -148,16 +148,16 @@ def addToPlaylist(system, entries, asJson=False):
                             newentries.extend(entries[i:i+6])
                     #add newentries to existing playlist
                     if newentries:
-                        logging.debug("Adding "+str(len(newentries))+" new entries to "+system)
+                        logger.debug("Adding "+str(len(newentries))+" new entries to "+system)
                         with open(Settings["playlistsPath"]+system+".lpl", "a", newline='') as playlist:
                             if lastChar != "\n":
                                 playlist.write("\n")
 
                             for entry in newentries:
                                 playlist.write(entry+"\n")
-                        logging.info(system+" playlist modified.")
+                        logger.info(system+" playlist modified.")
     else:
-        logging.debug("Making playlist "+system)
+        logger.debug("Making playlist "+system)
         #first time creation
         with open(Settings["playlistsPath"]+system+".lpl", "w", newline="\n") as playlist:
             if asJson:
@@ -171,11 +171,11 @@ def addToPlaylist(system, entries, asJson=False):
                 #make old playlist
                 for entry in entries:
                     playlist.write(entry+"\n")
-            logging.info(system+" playlist created")
+            logger.info(system+" playlist created")
                 
 def generatePlaylist():
     global state
-    logging.debug("Starting generatePlaylist at "+str(datetime.datetime.now()))
+    logger.debug("Starting generatePlaylist at "+str(datetime.datetime.now()))
     for core in coresJson:
         if core["allExt"]:
             playlist = []
@@ -193,8 +193,8 @@ def generatePlaylist():
                             #load m3u, filter out cue names
                             with open(getRomPath()+getCoreFolder(core)+"/"+rom) as f:
                                 result.extend([line.rstrip('\n') for line in f if line != "\n"])
-                    logging.debug("ignoring PSX cue's")
-                    logging.debug(result)
+                    logger.debug("ignoring PSX cue's")
+                    logger.debug(result)
                     romList = [x for x in romList if not x in result]
                 for rom in romList:
                     romsplit = os.path.splitext(rom)
@@ -219,10 +219,10 @@ def generatePlaylist():
                         playlist.extend(romInfo)
             
             #for line in playlist:
-            #    logging.info(line)
+            #    logger.info(line)
             #create playlist file
             if playlist:
-                logging.debug("Number of Files Found: "+str(len(playlist)))
+                logger.debug("Number of Files Found: "+str(len(playlist)))
                 addToPlaylist(core["system"][0], playlist, Settings["makeJsonPlaylists"])
     state = "Playlists: Complete"
 def colorToFloat(t):
@@ -239,19 +239,25 @@ BOOL_TRUE_COLOR = colorToFloat((41, 128, 185))
 TILED_DOUBLE = 1
 state = "idle"
 
+logger = 0
+
 Settings = {}
 def setup():
     global coresJson
     global Settings
-    logging.basicConfig(filename='PyLaylistMaker/PylaylistMaker.log', level=logging.DEBUG)
-    console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
-    logging.getLogger('').addHandler(console)
+    global logger
+    FORMAT = '%(asctime)s:%(levelname)-8s: %(message)s'
+    logging.basicConfig(filename='PylaylistMakerLog.log', level=logging.DEBUG, format=FORMAT, datefmt='%m-%d %H:%M')
+
+    logger = logging.getLogger()
+    #console = logging.StreamHandler()
+    #console.setLevel(logging.INFO)
+    #logging.getLogger('').addHandler(console)
     try:
         with open("PyLaylistMaker/systems.json", "r") as coresFile:
             coresJson = json.load(coresFile)
     except Exception as err:
-        logging.critical("MISSING systems.json")
+        logger.critical("MISSING systems.json")
         print("MISSING: settings.json")
         print(err)
         import time
@@ -261,13 +267,14 @@ def setup():
         with open("PyLaylistMaker/settings.json", "r") as SettingsFile:
             Settings = json.load(SettingsFile)
     except Exception as err:
-        logging.critical("MISSING: settings.json")
+        logger.critical("MISSING: settings.json")
         print("MISSING: settings.json")
         print(err)
         import time
         time.sleep(5)
         return 0
-
+    logger.setLevel(logging.DEBUG if Settings["printDebugLogs"] else logging.INFO)
+    logger.debug("setup complete")
 
 def main():
     import imgui
@@ -322,7 +329,7 @@ def main():
         imgui.push_style_color(imgui.COLOR_BUTTON, *STRING_COLOR)
         if imgui.button("Validate/Generate Folders", width=200, height=60):
             validateFolders()
-            logging.info("Folders Validated")
+            logger.info("Folders Validated")
             
         imgui.pop_style_color(1)
         imgui.text("THIS WILL ADD A BUNCH OF FOLDERS TO YOUR ROM PATH!")
@@ -330,7 +337,7 @@ def main():
         imgui.push_style_color(imgui.COLOR_BUTTON, *STRING_COLOR)
         if imgui.button("Generate/Update Playlists", width=200, height=60):
             generatePlaylist()
-            logging.info("Complete")
+            logger.info("Complete")
         imgui.pop_style_color(1)
         imgui.text("THIS WILL MODIFY PLAYLISTS, MAKE BACKUPS FIRST!")
         imgui.text("State: "+state+"\n\n\n")
@@ -351,6 +358,10 @@ def main():
     return 0
 
 if __name__ == "__main__":
-    setup()
-    main()
+    try:
+        setup()
+        main()
+    except Exception:
+        logging.exception("fatal error")
+		raise 
     #generatePlaylist()
