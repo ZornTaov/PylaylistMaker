@@ -363,5 +363,5 @@ if __name__ == "__main__":
         main()
     except Exception:
         logging.exception("fatal error")
-		raise 
+        raise 
     #generatePlaylist()
