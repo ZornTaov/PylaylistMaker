@@ -32,6 +32,7 @@ def generatePlaylistEntry(fileName, ext, romDir, systemName, core=""):
     if core:
         core_path = Settings["coresPath"]+core+"_libretro_libnx.nro"
     else:
+        core = "DETECT"
         core_path = "DETECT"
     info = {
         "path": romDir+"/"+fileName+ext,
