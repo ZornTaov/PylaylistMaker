@@ -277,6 +277,10 @@ def setup():
     logger.setLevel(logging.DEBUG if Settings["printDebugLogs"] else logging.INFO)
     logger.debug("setup complete")
 
+def updateSettings():
+    with open("PyLaylistMaker/settings.json", "w") as SettingsFile:
+        json.dump(Settings, SettingsFile, sort_keys=False, indent=2)
+
 def main():
     import imgui
     import imguihelper
@@ -294,41 +298,55 @@ def main():
         width, height = renderer.io.display_size
         imgui.set_next_window_size(width, height)
         imgui.set_next_window_position(0, 0)
-        imgui.begin("", 
+        imgui.begin("PyLaylist Maker", 
             flags=imgui.WINDOW_NO_TITLE_BAR | imgui.WINDOW_NO_RESIZE | imgui.WINDOW_NO_MOVE | imgui.WINDOW_NO_SAVED_SETTINGS
         )
-        imgui.text("Welcome to Pylaylist Maker for RetroArch!")
-        imgui.text("Touch is supported")
-        imgui.text("Settings:")
-        imgui.text("RetroArch Path: "+Settings["retroarchPATH"])
-        imgui.text("Roms Path: "+Settings["romsPaths"][Settings["indexRomPathUsed"]])
-        imgui.text("Playlists Path: "+Settings["playlistsPath"])
-        
+        imgui.set_window_font_scale(2.0)
+        imgui.begin_group()
+        imgui.text("Welcome to Pylaylist Maker for RetroArch!\nTouch is supported\nSettings:")
+        imgui.text("RetroArch Path: {}\nRetroArch Path: \nRoms Path: {}\nPlaylists Path: {}"
+            .format(Settings["retroarchPATH"],Settings["retroarchPATH"],Settings["romsPaths"][Settings["indexRomPathUsed"]],Settings["playlistsPath"]))
         imgui.push_style_color(imgui.COLOR_BUTTON, *STRING_COLOR)
-        if imgui.button("Toggle Roms Path", width=200, height=60):
+        if imgui.button("Toggle Roms Path"):
             Settings["indexRomPathUsed"] = 0 if Settings["indexRomPathUsed"]==1 else 1
+            updateSettings()
         imgui.pop_style_color(1)
+        imgui.same_line()
         
         if Settings["useAllExtentions"]:
             imgui.push_style_color(imgui.COLOR_BUTTON, *BOOL_TRUE_COLOR )
         else:
             imgui.push_style_color(imgui.COLOR_BUTTON, *BOOL_FALSE_COLOR )
-        if imgui.button("Use All Extentions: "+("True" if Settings["useAllExtentions"] else "False"), width=200, height=60):
+        if imgui.button("Use All Extentions: "+("True" if Settings["useAllExtentions"] else "False")):
             Settings["useAllExtentions"] = not Settings["useAllExtentions"]
+            updateSettings()
         imgui.pop_style_color(1)
 
         if Settings["useShorthandName"]:
             imgui.push_style_color(imgui.COLOR_BUTTON, *BOOL_TRUE_COLOR )
         else:
             imgui.push_style_color(imgui.COLOR_BUTTON, *BOOL_FALSE_COLOR )
-        if imgui.button("Use Shorthand Name: "+("True" if Settings["useShorthandName"] else "False"), width=200, height=60):
+        if imgui.button("Use Shorthand Name: "+("True" if Settings["useShorthandName"] else "False")):
             Settings["useShorthandName"] = not Settings["useShorthandName"]
+            updateSettings()
         imgui.pop_style_color(1)
+        imgui.same_line()
 
+        if Settings["makeJsonPlaylists"]:
+            imgui.push_style_color(imgui.COLOR_BUTTON, *BOOL_TRUE_COLOR )
+        else:
+            imgui.push_style_color(imgui.COLOR_BUTTON, *BOOL_FALSE_COLOR )
+        if imgui.button("Generate Json Playlists: "+("True" if Settings["makeJsonPlaylists"] else "False")):
+            Settings["makeJsonPlaylists"] = not Settings["makeJsonPlaylists"]
+            updateSettings()
+        imgui.pop_style_color(1)
+        imgui.end_group()
+        imgui.separator()
+        imgui.begin_group()
         imgui.text("Commands")
         
         imgui.push_style_color(imgui.COLOR_BUTTON, *STRING_COLOR)
-        if imgui.button("Validate/Generate Folders", width=200, height=60):
+        if imgui.button("Validate/Generate Folders"):
             validateFolders()
             logger.info("Folders Validated")
             
@@ -336,18 +354,19 @@ def main():
         imgui.text("THIS WILL ADD A BUNCH OF FOLDERS TO YOUR ROM PATH!")
 
         imgui.push_style_color(imgui.COLOR_BUTTON, *STRING_COLOR)
-        if imgui.button("Generate/Update Playlists", width=200, height=60):
+        if imgui.button("Generate/Update Playlists"):
             generatePlaylist()
             logger.info("Complete")
         imgui.pop_style_color(1)
         imgui.text("THIS WILL MODIFY PLAYLISTS, MAKE BACKUPS FIRST!")
         imgui.text("State: "+state+"\n\n\n")
         quitme = False
-        imgui.push_style_color(imgui.COLOR_BUTTON, *STRING_COLOR)
-        if imgui.button("Quit", width=200, height=60):
+        """imgui.push_style_color(imgui.COLOR_BUTTON, *STRING_COLOR)
+        if imgui.button("Quit"):
             quitme = True
         imgui.pop_style_color(1)
-        
+        """
+        imgui.end_group()
         imgui.end()
 
 
