@@ -327,6 +327,12 @@
         "allExt": [".m3u", ".cue", ".img", ".mdf", ".pbp", ".toc", ".cbn"],
         "systemExt": [".m3u", ".cue", ".img", ".pbp"]
     }, {
+        "name": "psp",
+        "cores": ["ppsspp"],
+        "system": ["Sony - PlayStation Portable"],
+        "allExt": ["elf", ".iso", ".cso", ".prx", ".pbp"],
+        "systemExt": []
+    }, {
         "name": "3do",
         "cores": ["4do"],
         "system": ["The 3DO Company - 3DO"],
