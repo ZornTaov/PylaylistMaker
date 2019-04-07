@@ -133,8 +133,8 @@ def addToPlaylist(system, entries, asJson=False):
                         lastLine = playlist.readline()
                         lastChar = lastLine[:-1]
                         line = playlist.readline()
-						if lastChar == "\n":
-							logger.info("\\n")
+                        if lastChar == "\n":
+                            logger.info("\\n")
                         if line == "" or lastChar == "\n":
                             lastChar = "\n" 
                             break
@@ -310,8 +310,8 @@ def main():
         imgui.set_window_font_scale(2.0)
         imgui.begin_group()
         imgui.text("Welcome to Pylaylist Maker for RetroArch!\nTouch is supported\nSettings:")
-        imgui.text("RetroArch Path: {}\nRetroArch Path: \nRoms Path: {}\nPlaylists Path: {}"
-            .format(Settings["retroarchPATH"],Settings["retroarchPATH"],Settings["romsPaths"][Settings["indexRomPathUsed"]],Settings["playlistsPath"]))
+        imgui.text("RetroArch Path: {}\nRoms Path: {}\nPlaylists Path: {}"
+            .format(Settings["retroarchPATH"],Settings["romsPaths"][Settings["indexRomPathUsed"]],Settings["playlistsPath"]))
         imgui.push_style_color(imgui.COLOR_BUTTON, *STRING_COLOR)
         if imgui.button("Toggle Roms Path"):
             Settings["indexRomPathUsed"] = 0 if Settings["indexRomPathUsed"]==1 else 1
