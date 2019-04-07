@@ -102,6 +102,7 @@ def addToPlaylist(system, entries, asJson=False):
         known = []
         jsonPlaylist = {}
         lastChar = ""
+        firstChar = ""
         with open(Settings["playlistsPath"]+system+".lpl", "r", newline='') as playlist:
             firstChar = playlist.read(1)
             
@@ -119,14 +120,6 @@ def addToPlaylist(system, entries, asJson=False):
                     for entry in entries:
                         if entry["path"] not in known:                            
                             newentries.append(entry)
-                    #add newentries to existing playlist
-                    if newentries:
-                        logger.debug("Adding "+str(len(newentries))+" new entries to "+system)
-                        #write to the file those that are new
-                        with open(Settings["playlistsPath"]+system+".lpl", "w", newline="\n") as playlist:
-                            jsonPlaylist["items"].extend(newentries)
-                            json.dump(OrderedDict([(key, jsonPlaylist[key]) for key in templateOrder]), playlist, sort_keys=False, indent=2)
-                        logger.info(system+" playlist modified.")
                 else:
                     logger.debug("playlist is old format")
                     #get list of known entries
@@ -140,23 +133,36 @@ def addToPlaylist(system, entries, asJson=False):
                         lastLine = playlist.readline()
                         lastChar = lastLine[:-1]
                         line = playlist.readline()
-                        if line == "" and lastChar == "\n":
+						if lastChar == "\n":
+							logger.info("\\n")
+                        if line == "" or lastChar == "\n":
                             lastChar = "\n" 
                             break
                     #check if entry is known
                     for i in range(0,len(entries),6):
                         if entries[i] not in known: #os.path.split(entries[i])[1]
                             newentries.extend(entries[i:i+6])
-                    #add newentries to existing playlist
-                    if newentries:
-                        logger.debug("Adding "+str(len(newentries))+" new entries to "+system)
-                        with open(Settings["playlistsPath"]+system+".lpl", "a", newline='') as playlist:
-                            if lastChar != "\n":
-                                playlist.write("\n")
+        if firstChar in ["{","["]:
+            #add newentries to existing playlist
+            if newentries:
+                logger.debug("Adding "+str(len(newentries))+" new entries to "+system)
+                #write to the file those that are new
+                with open(Settings["playlistsPath"]+system+".lpl", "w", newline="\n") as playlist:
+                    jsonPlaylist["items"].extend(newentries)
+                    json.dump(OrderedDict([(key, jsonPlaylist[key]) for key in templateOrder]), playlist, sort_keys=False, indent=2)
+                logger.info(system+" playlist modified.")
+        else:
+            #add newentries to existing playlist
+            if newentries:
+                logger.debug("Adding "+str(len(newentries))+" new entries to "+system)
+                with open(Settings["playlistsPath"]+system+".lpl", "a", newline='') as playlist:
+                    if lastChar != "\n":
+                        playlist.write("\n")
 
-                            for entry in newentries:
-                                playlist.write(entry+"\n")
-                        logger.info(system+" playlist modified.")
+                    for entry in newentries:
+                        playlist.write(entry+"\n")
+                logger.info(system+" playlist modified.")
+
     else:
         logger.debug("Making playlist "+system)
         #first time creation
