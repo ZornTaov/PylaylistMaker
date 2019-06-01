@@ -89,7 +89,7 @@ def validateFolders():
                 info.write("put files in here ending with: ")
                 for i in zipTypes:
                     info.write(i+", ")
-                for i in core["allExt" if Settings["useAllExtentions"] else "systemExt"]:
+                for i in core["allExt" if Settings["useAllExtentions"] or not core["allExt"] else "systemExt"]:
                     info.write(i+", ")
     state = "Validate: Complete"
 
