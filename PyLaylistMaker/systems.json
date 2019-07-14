@@ -333,6 +333,12 @@
         "allExt": ["elf", ".iso", ".cso", ".prx", ".pbp"],
         "systemExt": []
     }, {
+        "name": "ps2",
+        "cores": ["play"],
+        "system": ["Sony - PlayStation 2"],
+        "allExt": ["iso", "isz", "cso", "bin", "elf"],
+        "systemExt": []
+    }, {
         "name": "3do",
         "cores": ["4do"],
         "system": ["The 3DO Company - 3DO"],
